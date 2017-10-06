@@ -12,6 +12,8 @@ trigger AccountInsert on Account (before insert , before update , after update) 
        {
            if(acc.OwnerId != trigger.oldMap.get(acc.id).OwnerId)
            {
+               system.debug('-----Owner-----'+acc.OwnerId);
+               system.debug('------OldOwner----'+trigger.oldMap.get(acc.id).OwnerId);
                acc.Old_Owner__c = trigger.oldMap.get(acc.id).OwnerId;
            }
        }
